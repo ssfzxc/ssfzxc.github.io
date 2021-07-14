@@ -1,0 +1,14 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>linux - 分类 - ssfzxc&#39;s blog</title>
+        <link>https://ssfzxc.github.io/categories/linux/</link>
+        <description>linux - 分类 - ssfzxc&#39;s blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 01 Jul 2021 11:26:51 &#43;0800</lastBuildDate><atom:link href="https://ssfzxc.github.io/categories/linux/" rel="self" type="application/rss+xml" /><item>
+    <title>Hello ArchLinux</title>
+    <link>https://ssfzxc.github.io/arch/</link>
+    <pubDate>Thu, 01 Jul 2021 11:26:51 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://ssfzxc.github.io/arch/</guid>
+    <description><![CDATA[Hello Archlinux 安装 ArchLinux 时的一些笔记 安装注意点 USB 启动方式一定要是 UEFI 方式 安装 key 不存在, pacman-key 命令 iwd(iwctl) wifi/wlan 链接 CLI, dhcpcd archlinuxcn 需要安装 sudo pacman -S archlinuxcn-keyring 独立显卡损坏，启动 startx 需要先禁用 常用]]></description>
+</item></channel>
+</rss>
