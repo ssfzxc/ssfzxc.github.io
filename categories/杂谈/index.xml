@@ -4,18 +4,18 @@
         <link>https://ssfzxc.github.io/categories/%E6%9D%82%E8%B0%88/</link>
         <description>杂谈 - 分类 - ssfzxc&#39;s blog</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 01 Jul 2021 11:26:51 &#43;0800</lastBuildDate><atom:link href="https://ssfzxc.github.io/categories/%E6%9D%82%E8%B0%88/" rel="self" type="application/rss+xml" /><item>
+    <title>Hello</title>
+    <link>https://ssfzxc.github.io/hello/</link>
+    <pubDate>Thu, 01 Jul 2021 11:26:51 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://ssfzxc.github.io/hello/</guid>
+    <description><![CDATA[你好 写点东西 也不知道要干嘛，有点浮躁，决定静下心来写点什么,就从最近怎么折腾的Coroutine开始吧。 漫谈工作中的技术 本人从事Java开发]]></description>
+</item><item>
     <title>个人觉得的协程</title>
     <link>https://ssfzxc.github.io/ifeelcoroutine/</link>
     <pubDate>Thu, 01 Jul 2021 11:26:51 &#43;0800</pubDate>
     <author>作者</author>
     <guid>https://ssfzxc.github.io/ifeelcoroutine/</guid>
-    <description><![CDATA[简单说说，我觉得的协程(Coroutine) coroutine async await Coroutine单从IO方面, 浅谈个人的看法和想法, 并非专业角度 此为杂谈, 内容有点乱, 后]]></description>
-</item><item>
-    <title>你好</title>
-    <link>https://ssfzxc.github.io/hello/</link>
-    <pubDate>Thu, 01 Jul 2021 11:26:51 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://ssfzxc.github.io/hello/</guid>
-    <description><![CDATA[你好 ##*** 0 也不知道要干嘛，有点浮躁，决定静下心来写点什么,就从最近怎么折腾的Coroutine开始吧。 工作 本人从事Java开发]]></description>
+    <description><![CDATA[简单说说，我觉得的协程 (Coroutine) coroutine async await Coroutine单从 IO 方面, 浅谈个人的看法和想法, 并非专业角度 此为杂谈, 内容有点乱, 后期有空再优化(开发者都]]></description>
 </item></channel>
 </rss>

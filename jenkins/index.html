@@ -9,8 +9,8 @@
 <meta property="og:description" content="安装 Jenkins 时的一些笔记" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://ssfzxc.github.io/jenkins/" /><meta property="og:image" content="https://ssfzxc.github.io/logo.png"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-07-01T11:26:51+08:00" />
-<meta property="article:modified_time" content="2020-07-08T14:52:31+08:00" />
+<meta property="article:published_time" content="2021-07-14T17:16:46+08:00" />
+<meta property="article:modified_time" content="2021-07-14T17:11:07+08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://ssfzxc.github.io/logo.png"/>
@@ -20,7 +20,7 @@
 <meta name="application-name" content="LoveIt">
 <meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://ssfzxc.github.io/jenkins/" /><link rel="prev" href="https://ssfzxc.github.io/ifeelcoroutine/" /><link rel="next" href="https://ssfzxc.github.io/arch/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://ssfzxc.github.io/jenkins/" /><link rel="prev" href="https://ssfzxc.github.io/hello/" /><link rel="next" href="https://ssfzxc.github.io/arch/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -29,8 +29,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/ssfzxc.github.io\/jenkins\/"
-        },"image": ["https:\/\/ssfzxc.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "Jenkins, CI\/CD, 运维","wordcount":  96 ,
-        "url": "https:\/\/ssfzxc.github.io\/jenkins\/","datePublished": "2021-07-01T11:26:51+08:00","dateModified": "2020-07-08T14:52:31+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+        },"image": ["https:\/\/ssfzxc.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "Jenkins, 运维","wordcount":  96 ,
+        "url": "https:\/\/ssfzxc.github.io\/jenkins\/","datePublished": "2021-07-14T17:16:46+08:00","dateModified": "2021-07-14T17:11:07+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/ssfzxc.github.io\/images\/avatar.png"},"author": {
                 "@type": "Person",
@@ -106,7 +106,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Hello Jenkins</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>ssfzxc</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/jenkins/"><i class="far fa-folder fa-fw"></i>Jenkins</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-07-01">2021-07-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 96 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-07-14">2021-07-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 96 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 1 分钟&nbsp;<span id="/jenkins/" class="leancloud_visitors" data-flag-title="Hello Jenkins">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
@@ -133,7 +133,7 @@
 <p>Pipeline：新增 withEnv([&lsquo;JENKINS_NODE_COOKIE=background_job&rsquo;])</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -150,7 +150,7 @@
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-groovy" data-lang="groovy"><span class="n">pipeline</span> <span class="o">{</span>
+<pre tabindex="0" class="chroma"><code class="language-groovy" data-lang="groovy"><span class="n">pipeline</span> <span class="o">{</span>
     <span class="n">agent</span> <span class="n">any</span>
 
     <span class="n">stages</span> <span class="o">{</span>
@@ -170,25 +170,26 @@
 </div></li>
 <li>
 <p>FreeStyle: 脚本最前面新增 BUILD_ID</p>
-</li>
-</ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="nv">BUILD_ID</span><span class="o">=</span>donotKillMe
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="nv">BUILD_ID</span><span class="o">=</span>donotKillMe
 <span class="nb">echo</span> <span class="s1">&#39;hello&#39;</span>
 </code></pre></td></tr></table>
 </div>
 </div></li>
 </ul>
+</li>
+</ul>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2020-07-08</span>
+                <span>更新于 2021-07-14&nbsp;<a class="git-hash" href="https://github.com/dillonzq/LoveIt/commit/4bb5ad17d54470b6ec661d5f816c055b663b648e" target="_blank" title="commit by ssfzxc(ssfzxc@163.com) 4bb5ad17d54470b6ec661d5f816c055b663b648e: install archlinux">
+                                    <i class="fas fa-hashtag fa-fw"></i>4bb5ad1</a></span>
             </div>
             <div class="post-info-license"></div>
         </div>
@@ -197,26 +198,26 @@
                             <a class="link-to-markdown" href="/jenkins/index.md" target="_blank">阅读原始文档</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://ssfzxc.github.io/jenkins/" data-title="Hello Jenkins" data-hashtags="Jenkins,CI/CD,运维"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://ssfzxc.github.io/jenkins/" data-hashtag="Jenkins"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Hacker News" data-sharer="hackernews" data-url="https://ssfzxc.github.io/jenkins/" data-title="Hello Jenkins"><i class="fab fa-hacker-news fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://ssfzxc.github.io/jenkins/" data-title="Hello Jenkins"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://ssfzxc.github.io/jenkins/" data-title="Hello Jenkins"><i class="fab fa-weibo fa-fw"></i></a></span>
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://ssfzxc.github.io/jenkins/" data-title="Hello Jenkins" data-hashtags="Jenkins,运维"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://ssfzxc.github.io/jenkins/" data-hashtag="Jenkins"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Hacker News" data-sharer="hackernews" data-url="https://ssfzxc.github.io/jenkins/" data-title="Hello Jenkins"><i class="fab fa-hacker-news fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://ssfzxc.github.io/jenkins/" data-title="Hello Jenkins"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://ssfzxc.github.io/jenkins/" data-title="Hello Jenkins"><i class="fab fa-weibo fa-fw"></i></a></span>
             </div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/jenkins/">Jenkins</a>,&nbsp;<a href="/tags/ci/cd/">CI/CD</a>,&nbsp;<a href="/tags/%E8%BF%90%E7%BB%B4/">运维</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/jenkins/">Jenkins</a>,&nbsp;<a href="/tags/%E8%BF%90%E7%BB%B4/">运维</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/ifeelcoroutine/" class="prev" rel="prev" title="个人觉得的协程"><i class="fas fa-angle-left fa-fw"></i>个人觉得的协程</a>
+    <div class="post-nav"><a href="/hello/" class="prev" rel="prev" title="Hello"><i class="fas fa-angle-left fa-fw"></i>Hello</a>
             <a href="/arch/" class="next" rel="next" title="Hello ArchLinux">Hello ArchLinux<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 <div id="comments"><div id="valine" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.85.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.87.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">xxxx</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>

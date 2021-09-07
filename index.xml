@@ -3,35 +3,49 @@
         <title>ssfzxc&#39;s blog</title>
         <link>https://ssfzxc.github.io/</link>
         <description>关于 LoveIt 主题</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 01 Jul 2021 11:26:51 &#43;0800</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 07 Sep 2021 11:00:00 &#43;0800</lastBuildDate>
             <atom:link href="https://ssfzxc.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Cross Compile</title>
+    <link>https://ssfzxc.github.io/crosscompile/</link>
+    <pubDate>Tue, 07 Sep 2021 11:00:00 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://ssfzxc.github.io/crosscompile/</guid>
+    <description><![CDATA[ArchLinux + Musl 安装依赖 pacman -S musl kernel-headers-musl musl: musl 主体依赖 kernel-headers-musl: musl 使用的 linux-headers Rust rustup target add x86_64-unknown-linux-musl 参考案例: openssl 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 mkdir /musl wget http://github.com/openssl/openssl/archive/OpenSSL_1_1_1l.tar.gz tar zxvf OpenSSL_1_1_1l.tar.gz cd OpenSSL_1_1_1l.tar.gz CC=&#34;musl-gcc -fPIE -pie&#34; ./Configure no-shared no-async --prefix=/musl --openssldir=/musl/ssl linux-x86_64 make depend make]]></description>
+</item><item>
+    <title>TraceID</title>
+    <link>https://ssfzxc.github.io/traceid/</link>
+    <pubDate>Tue, 07 Sep 2021 11:00:00 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://ssfzxc.github.io/traceid/</guid>
+    <description><![CDATA[日志跟踪 在生产报错查询日志恢复当时场景时, 或者在测试环境进行查询 BUG 时, 可能出现其他服务或业务日志的干扰, 这时我们系统有工具或者其他什么可用的]]></description>
+</item><item>
     <title>Hello ArchLinux</title>
     <link>https://ssfzxc.github.io/arch/</link>
-    <pubDate>Thu, 01 Jul 2021 11:26:51 &#43;0800</pubDate>
+    <pubDate>Wed, 14 Jul 2021 17:16:46 &#43;0800</pubDate>
     <author>作者</author>
     <guid>https://ssfzxc.github.io/arch/</guid>
     <description><![CDATA[Hello Archlinux 安装 ArchLinux 时的一些笔记 安装注意点 USB 启动方式一定要是 UEFI 方式 安装 key 不存在, pacman-key 命令 iwd(iwctl) wifi/wlan 链接 CLI, dhcpcd archlinuxcn 需要安装 sudo pacman -S archlinuxcn-keyring 独立显卡损坏，启动 startx 需要先禁用 常用]]></description>
 </item><item>
     <title>Hello Jenkins</title>
     <link>https://ssfzxc.github.io/jenkins/</link>
-    <pubDate>Thu, 01 Jul 2021 11:26:51 &#43;0800</pubDate>
+    <pubDate>Wed, 14 Jul 2021 17:16:46 &#43;0800</pubDate>
     <author>作者</author>
     <guid>https://ssfzxc.github.io/jenkins/</guid>
     <description><![CDATA[Hello Jenkins 安装 Jenkins 时的一些笔记 坑 Jenkins Job 启动后服务自动随 Job 执行完毕后关闭 Pipeline：新增 withEnv([&lsquo;JENKINS_NODE_COOKIE=background_job&rsquo;]) 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 pipeline { agent any stages { stage(&#39;startup service local&#39;) { steps { script]]></description>
+</item><item>
+    <title>Hello</title>
+    <link>https://ssfzxc.github.io/hello/</link>
+    <pubDate>Thu, 01 Jul 2021 11:26:51 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://ssfzxc.github.io/hello/</guid>
+    <description><![CDATA[你好 写点东西 也不知道要干嘛，有点浮躁，决定静下心来写点什么,就从最近怎么折腾的Coroutine开始吧。 漫谈工作中的技术 本人从事Java开发]]></description>
 </item><item>
     <title>个人觉得的协程</title>
     <link>https://ssfzxc.github.io/ifeelcoroutine/</link>
     <pubDate>Thu, 01 Jul 2021 11:26:51 &#43;0800</pubDate>
     <author>作者</author>
     <guid>https://ssfzxc.github.io/ifeelcoroutine/</guid>
-    <description><![CDATA[简单说说，我觉得的协程(Coroutine) coroutine async await Coroutine单从IO方面, 浅谈个人的看法和想法, 并非专业角度 此为杂谈, 内容有点乱, 后]]></description>
-</item><item>
-    <title>你好</title>
-    <link>https://ssfzxc.github.io/hello/</link>
-    <pubDate>Thu, 01 Jul 2021 11:26:51 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://ssfzxc.github.io/hello/</guid>
-    <description><![CDATA[你好 ##*** 0 也不知道要干嘛，有点浮躁，决定静下心来写点什么,就从最近怎么折腾的Coroutine开始吧。 工作 本人从事Java开发]]></description>
+    <description><![CDATA[简单说说，我觉得的协程 (Coroutine) coroutine async await Coroutine单从 IO 方面, 浅谈个人的看法和想法, 并非专业角度 此为杂谈, 内容有点乱, 后期有空再优化(开发者都]]></description>
 </item></channel>
 </rss>

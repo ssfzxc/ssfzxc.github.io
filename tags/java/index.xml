@@ -1,0 +1,14 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>java - 标签 - ssfzxc&#39;s blog</title>
+        <link>https://ssfzxc.github.io/tags/java/</link>
+        <description>java - 标签 - ssfzxc&#39;s blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 07 Sep 2021 11:00:00 &#43;0800</lastBuildDate><atom:link href="https://ssfzxc.github.io/tags/java/" rel="self" type="application/rss+xml" /><item>
+    <title>TraceID</title>
+    <link>https://ssfzxc.github.io/traceid/</link>
+    <pubDate>Tue, 07 Sep 2021 11:00:00 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://ssfzxc.github.io/traceid/</guid>
+    <description><![CDATA[日志跟踪 在生产报错查询日志恢复当时场景时, 或者在测试环境进行查询 BUG 时, 可能出现其他服务或业务日志的干扰, 这时我们系统有工具或者其他什么可用的]]></description>
+</item></channel>
+</rss>

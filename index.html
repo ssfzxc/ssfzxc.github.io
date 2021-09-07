@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
     <head>
-	<meta name="generator" content="Hugo 0.85.0" />
+	<meta name="generator" content="Hugo 0.87.0" />
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
@@ -102,28 +102,38 @@
         alt="/images/avatar.png"
         title="/images/avatar.png" /></a></div><h2 class="home-subtitle"><div id="id-1" class="typeit"></div></h2><div class="links"><a href="https://github.com/ssfzxc" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="mailto:ssfzxc@163.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/crosscompile/">Cross Compile</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>ssfzxc</a></span>&nbsp;<span class="post-publish">发布于 <time datetime="2021-09-07">2021-09-07</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/linux/"><i class="far fa-folder fa-fw"></i>linux</a></span></div><div class="content">ArchLinux + Musl 安装依赖 pacman -S musl kernel-headers-musl musl: musl 主体依赖 kernel-headers-musl: musl 使用的 linux-headers Rust rustup target add x86_64-unknown-linux-musl 参考案例: openssl 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 mkdir /musl wget http://github.com/openssl/openssl/archive/OpenSSL_1_1_1l.tar.gz tar zxvf OpenSSL_1_1_1l.tar.gz cd OpenSSL_1_1_1l.tar.gz CC=&#34;musl-gcc -fPIE -pie&#34; ./Configure no-shared no-async --prefix=/musl --openssldir=/musl/ssl linux-x86_64 make depend make</div><div class="post-footer">
+        <a href="/crosscompile/">阅读全文</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/rust/">rust</a>,&nbsp;<a href="/tags/linux/">linux</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/traceid/">TraceID</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>ssfzxc</a></span>&nbsp;<span class="post-publish">发布于 <time datetime="2021-09-07">2021-09-07</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/java/"><i class="far fa-folder fa-fw"></i>java</a></span></div><div class="content">日志跟踪 在生产报错查询日志恢复当时场景时, 或者在测试环境进行查询 BUG 时, 可能出现其他服务或业务日志的干扰, 这时我们系统有工具或者其他什么可用的</div><div class="post-footer">
+        <a href="/traceid/">阅读全文</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/arch/">Hello ArchLinux</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>ssfzxc</a></span>&nbsp;<span class="post-publish">发布于 <time datetime="2021-07-01">2021-07-01</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/linux/"><i class="far fa-folder fa-fw"></i>linux</a></span></div><div class="content">Hello Archlinux 安装 ArchLinux 时的一些笔记 安装注意点 USB 启动方式一定要是 UEFI 方式 安装 key 不存在, pacman-key 命令 iwd(iwctl) wifi/wlan 链接 CLI, dhcpcd archlinuxcn 需要安装 sudo pacman -S archlinuxcn-keyring 独立显卡损坏，启动 startx 需要先禁用 常用</div><div class="post-footer">
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>ssfzxc</a></span>&nbsp;<span class="post-publish">发布于 <time datetime="2021-07-14">2021-07-14</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/linux/"><i class="far fa-folder fa-fw"></i>linux</a></span></div><div class="content">Hello Archlinux 安装 ArchLinux 时的一些笔记 安装注意点 USB 启动方式一定要是 UEFI 方式 安装 key 不存在, pacman-key 命令 iwd(iwctl) wifi/wlan 链接 CLI, dhcpcd archlinuxcn 需要安装 sudo pacman -S archlinuxcn-keyring 独立显卡损坏，启动 startx 需要先禁用 常用</div><div class="post-footer">
         <a href="/arch/">阅读全文</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/archliux/">archliux</a>,&nbsp;<a href="/tags/linux/">linux</a></div></div>
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/%E8%BF%90%E7%BB%B4/">运维</a>,&nbsp;<a href="/tags/linux/">linux</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/jenkins/">Hello Jenkins</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>ssfzxc</a></span>&nbsp;<span class="post-publish">发布于 <time datetime="2021-07-01">2021-07-01</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/jenkins/"><i class="far fa-folder fa-fw"></i>Jenkins</a></span></div><div class="content">Hello Jenkins 安装 Jenkins 时的一些笔记 坑 Jenkins Job 启动后服务自动随 Job 执行完毕后关闭 Pipeline：新增 withEnv([&lsquo;JENKINS_NODE_COOKIE=background_job&rsquo;]) 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 pipeline { agent any stages { stage(&#39;startup service local&#39;) { steps { script</div><div class="post-footer">
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>ssfzxc</a></span>&nbsp;<span class="post-publish">发布于 <time datetime="2021-07-14">2021-07-14</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/jenkins/"><i class="far fa-folder fa-fw"></i>Jenkins</a></span></div><div class="content">Hello Jenkins 安装 Jenkins 时的一些笔记 坑 Jenkins Job 启动后服务自动随 Job 执行完毕后关闭 Pipeline：新增 withEnv([&lsquo;JENKINS_NODE_COOKIE=background_job&rsquo;]) 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 pipeline { agent any stages { stage(&#39;startup service local&#39;) { steps { script</div><div class="post-footer">
         <a href="/jenkins/">阅读全文</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/jenkins/">Jenkins</a>,&nbsp;<a href="/tags/ci/cd/">CI/CD</a>,&nbsp;<a href="/tags/%E8%BF%90%E7%BB%B4/">运维</a></div></div>
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/jenkins/">Jenkins</a>,&nbsp;<a href="/tags/%E8%BF%90%E7%BB%B4/">运维</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/ifeelcoroutine/">个人觉得的协程</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>ssfzxc</a></span>&nbsp;<span class="post-publish">发布于 <time datetime="2021-07-01">2021-07-01</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E6%9D%82%E8%B0%88/"><i class="far fa-folder fa-fw"></i>杂谈</a></span></div><div class="content">简单说说，我觉得的协程(Coroutine) coroutine async await Coroutine单从IO方面, 浅谈个人的看法和想法, 并非专业角度 此为杂谈, 内容有点乱, 后</div><div class="post-footer">
-        <a href="/ifeelcoroutine/">阅读全文</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/%E6%9D%82%E8%B0%88/">杂谈</a>,&nbsp;<a href="/tags/coroutine/">coroutine</a>,&nbsp;<a href="/tags/io/">IO</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/hello/">你好</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>ssfzxc</a></span>&nbsp;<span class="post-publish">发布于 <time datetime="2021-07-01">2021-07-01</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E6%9D%82%E8%B0%88/"><i class="far fa-folder fa-fw"></i>杂谈</a></span></div><div class="content">你好 ##*** 0 也不知道要干嘛，有点浮躁，决定静下心来写点什么,就从最近怎么折腾的Coroutine开始吧。 工作 本人从事Java开发</div><div class="post-footer">
+        <a href="/hello/">Hello</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>ssfzxc</a></span>&nbsp;<span class="post-publish">发布于 <time datetime="2021-07-01">2021-07-01</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E6%9D%82%E8%B0%88/"><i class="far fa-folder fa-fw"></i>杂谈</a></span></div><div class="content">你好 写点东西 也不知道要干嘛，有点浮躁，决定静下心来写点什么,就从最近怎么折腾的Coroutine开始吧。 漫谈工作中的技术 本人从事Java开发</div><div class="post-footer">
         <a href="/hello/">阅读全文</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/%E6%9D%82%E8%B0%88/">杂谈</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/ifeelcoroutine/">个人觉得的协程</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>ssfzxc</a></span>&nbsp;<span class="post-publish">发布于 <time datetime="2021-07-01">2021-07-01</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E6%9D%82%E8%B0%88/"><i class="far fa-folder fa-fw"></i>杂谈</a></span></div><div class="content">简单说说，我觉得的协程 (Coroutine) coroutine async await Coroutine单从 IO 方面, 浅谈个人的看法和想法, 并非专业角度 此为杂谈, 内容有点乱, 后期有空再优化(开发者都</div><div class="post-footer">
+        <a href="/ifeelcoroutine/">阅读全文</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/%E6%9D%82%E8%B0%88/">杂谈</a>,&nbsp;<a href="/tags/%E5%BC%80%E5%8F%91/">开发</a></div></div>
 </article></div></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.85.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.87.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">xxxx</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>

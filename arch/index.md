@@ -54,4 +54,16 @@
   pacman-key --populate archlinuxcn
   ```
 
+## 折腾AwesomeWM
+
+- awesome 使用 `sudo pacman -S awesome-git`, 特性更为全面
+
+- 锁屏工具 `i3clock`
+
+- 窗口合成器, 实现半透明等等功能 `picom`
+
+- 全局应用搜索 `rofi`
+
+- terminal `kitty || alacritty`
+
 

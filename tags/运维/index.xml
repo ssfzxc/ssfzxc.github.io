@@ -3,10 +3,17 @@
         <title>运维 - 标签 - ssfzxc&#39;s blog</title>
         <link>https://ssfzxc.github.io/tags/%E8%BF%90%E7%BB%B4/</link>
         <description>运维 - 标签 - ssfzxc&#39;s blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 01 Jul 2021 11:26:51 &#43;0800</lastBuildDate><atom:link href="https://ssfzxc.github.io/tags/%E8%BF%90%E7%BB%B4/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 14 Jul 2021 17:16:46 &#43;0800</lastBuildDate><atom:link href="https://ssfzxc.github.io/tags/%E8%BF%90%E7%BB%B4/" rel="self" type="application/rss+xml" /><item>
+    <title>Hello ArchLinux</title>
+    <link>https://ssfzxc.github.io/arch/</link>
+    <pubDate>Wed, 14 Jul 2021 17:16:46 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://ssfzxc.github.io/arch/</guid>
+    <description><![CDATA[Hello Archlinux 安装 ArchLinux 时的一些笔记 安装注意点 USB 启动方式一定要是 UEFI 方式 安装 key 不存在, pacman-key 命令 iwd(iwctl) wifi/wlan 链接 CLI, dhcpcd archlinuxcn 需要安装 sudo pacman -S archlinuxcn-keyring 独立显卡损坏，启动 startx 需要先禁用 常用]]></description>
+</item><item>
     <title>Hello Jenkins</title>
     <link>https://ssfzxc.github.io/jenkins/</link>
-    <pubDate>Thu, 01 Jul 2021 11:26:51 &#43;0800</pubDate>
+    <pubDate>Wed, 14 Jul 2021 17:16:46 &#43;0800</pubDate>
     <author>作者</author>
     <guid>https://ssfzxc.github.io/jenkins/</guid>
     <description><![CDATA[Hello Jenkins 安装 Jenkins 时的一些笔记 坑 Jenkins Job 启动后服务自动随 Job 执行完毕后关闭 Pipeline：新增 withEnv([&lsquo;JENKINS_NODE_COOKIE=background_job&rsquo;]) 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 pipeline { agent any stages { stage(&#39;startup service local&#39;) { steps { script]]></description>

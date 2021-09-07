@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>TraceID - ssfzxc&#39;s blog</title><meta name="Description" content="日志跟踪, 链路跟踪"><meta property="og:title" content="TraceID" />
+<meta property="og:description" content="日志跟踪, 链路跟踪" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ssfzxc.github.io/traceid/" /><meta property="og:image" content="https://ssfzxc.github.io/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-09-07T11:00:00+08:00" />
+<meta property="article:modified_time" content="2021-09-07T11:00:00+08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://ssfzxc.github.io/logo.png"/>
+
+<meta name="twitter:title" content="TraceID"/>
+<meta name="twitter:description" content="日志跟踪, 链路跟踪"/>
+<meta name="application-name" content="LoveIt">
+<meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://ssfzxc.github.io/traceid/" /><link rel="prev" href="https://ssfzxc.github.io/arch/" /><link rel="next" href="https://ssfzxc.github.io/crosscompile/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "TraceID",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/ssfzxc.github.io\/traceid\/"
+        },"image": ["https:\/\/ssfzxc.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "java","wordcount":  2383 ,
+        "url": "https:\/\/ssfzxc.github.io\/traceid\/","datePublished": "2021-09-07T11:00:00+08:00","dateModified": "2021-09-07T11:00:00+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": "https:\/\/ssfzxc.github.io\/images\/avatar.png"},"author": {
+                "@type": "Person",
+                "name": "ssfzxc"
+            },"description": "日志跟踪, 链路跟踪"
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="ssfzxc&#39;s blog"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw'></i></span>ssfzxc&#39;s blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/" title="GitHub"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="ssfzxc&#39;s blog"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw'></i></span>ssfzxc&#39;s blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/" title="GitHub"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">TraceID</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>ssfzxc</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/java/"><i class="far fa-folder fa-fw"></i>java</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-09-07">2021-09-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2383 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 5 分钟&nbsp;<span id="/traceid/" class="leancloud_visitors" data-flag-title="TraceID">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#什么是-traceid">什么是 TraceId？</a></li>
+    <li><a href="#简单实现">简单实现</a></li>
+    <li><a href="#什么是-mdc">什么是 MDC?</a></li>
+    <li><a href="#使用-mdc-实现">使用 MDC 实现</a></li>
+    <li><a href="#controller-新建-traceid">Controller 新建 traceId</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#公共线程池管理">公共线程池管理</a></li>
+    <li><a href="#springboot-注解-async">SpringBoot 注解 @Async</a>
+      <ul>
+        <li><a href="#aop--约定">AOP &amp; 约定</a></li>
+        <li><a href="#修改-springboot-async-注解配置的线程池">修改 SpringBoot @Async 注解配置的线程池?</a></li>
+        <li><a href="#new-thread">new Thread</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#dubbo">Dubbo</a></li>
+    <li><a href="#springcloud">SpringCloud</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="日志跟踪">日志跟踪</h1>
+<p>在生产报错查询日志恢复当时场景时, 或者在测试环境进行查询 BUG 时,
+可能出现其他服务或业务日志的干扰,
+这时我们系统有工具或者其他什么可用的帮助我们是筛选出我们所需要的日志.</p>
+<p>基于通常情况, 我们会使用在定位到 Exception 处后, 使用 Grep 筛选 Thread
+Name, 这是一个可行有效的方案, 但是当遇到 Async 异步调用以及发送消息队列,
+接下来日志的查询会是一个繁琐复杂的流程.</p>
+<p><strong>如何高效地, 更少地侵入业务代码的情况下, 新增一个 ID 号贯穿整个业务流程
+(biz chain)?</strong></p>
+<h1 id="日志新增-traceid">日志新增 TraceId</h1>
+<p>接下来, 我们局部分析整个问题. 先从单应用服务开始, 引入 traceId
+即一个贯穿头尾的 id, 将其在日志中打印, 实现一个 ID 贯穿业务</p>
+<h2 id="什么是-traceid">什么是 TraceId？</h2>
+<p>在业内, 日志跟踪有个高大上的名字叫做: 全链路跟踪, 其包括解决方案有
+traceId 日志贯穿, 日志归集, 日志检索(ELK 全家通).</p>
+<p>简单来说现在日志跟踪就是 <strong>使用一个 id 流水号去贯穿整个业务调用</strong>,</p>
+<p>而 trace 用 <strong>跟踪;追溯</strong> 的意思, 所以我们用 traceId 代指
+整个贯穿业务的流水号以便于区分其他如业务流水号 bizNo 等.</p>
+<p>traceId 可以使用 UUID, MongoDB ID, SnowflakeId, Random 等方式生成,
+只需要保证 id 号的唯一性即可.</p>
+<h2 id="简单实现">简单实现</h2>
+<p>我们单纯的自己使用代码去实现, 首先上文也提到了使用 threadName,
+因此可以使用 ThreadLocal 对象存放 traceId, 再对所有使用 Logger
+打印日志的行新增打印 traceId, 这是大家以及大佬们多使用的方法.</p>
+<p>但是对每一行 Logger 打印日志都修改工程量太过庞大,
+以及不符合我们低侵入性的想法.</p>
+<p><strong>如何低侵入性地修改?</strong></p>
+<h2 id="什么是-mdc">什么是 MDC?</h2>
+<p>首先看看 SLF4J 的官方文档是怎么说的:</p>
+<blockquote>
+<p>此类隐藏并充当底层日志记录系统的 MDC 实现的替代品。</p>
+<p>如果底层日志系统提供 MDC 功能，则 SLF4J 的
+MDC（即此类）将委托给底层系统的 MDC。注意，目前只有两个日志系统，即
+log4j 和 logback，提供了 MDC 功能。 对于不支持 MDC 的
+java.util.logging，将使用 BasicMDCAdapter。对于其他系统，即 slf4j
+simple 和 slf4j nop，将使用 NOPMDCAdapter。 因此，作为 SLF4J
+用户，您可以在存在 log4j、logback 或 java.util.logging 的情况下利用
+MDC，但不必强制将这些系统作为依赖项依赖于您的用户。</p>
+<p>有关 MDC 的更多信息，请参阅 logback 手册中有关 MDC 的章节。</p>
+<p>请注意，此类中的所有方法都是静态的。</p>
+</blockquote>
+<p>还是没有说明白, MDC 全称是 Mapped Diagnostic
+Context，可以粗略的理解成是一个线程安全的存放诊断日志的容器。
+就是一个存放当前线程上下文信息的对象. slf4j
+文档说的是我们无需关注底层日志框架如何实现,slf4j 会委托给底层日志系统,</p>
+<p>正如 slf4j 想实现的 <strong>日志门面框架</strong> 将代码和具体底层日志框架分开, 由
+slf4j 做适配器桥接双方.</p>
+<h2 id="使用-mdc-实现">使用 MDC 实现</h2>
+<p>说到底 MDC 是对 ThreadLocal 的包装. 相对于我们自建 ThreadLocal 而言,
+使用 MDC 我们可以直接在日志配置文件中配置输出 traceId</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="c1">// 将 traceId 放入 MDC
+</span><span class="c1"></span><span class="n">MDC</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;traceId&#34;</span><span class="o">,</span> <span class="n">newTraceId</span><span class="o">());</span>
+<span class="c1">// 将 traceId 放入 MDC
+</span><span class="c1"></span><span class="n">String</span> <span class="n">traceId</span> <span class="o">=</span> <span class="n">MDC</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&#34;traceId&#34;</span><span class="o">);</span>
+<span class="c1">// 清除MDC 中的 traceId
+</span><span class="c1"></span><span class="n">MDC</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="s">&#34;traceId&#34;</span><span class="o">);</span>
+<span class="c1">// 清空 MDC
+</span><span class="c1"></span><span class="n">MDC</span><span class="o">.</span><span class="na">clear</span><span class="o">();</span>
+<span class="c1">// %X{treadId} 大跨号内的字符串保持和 MDC 的 key 相同即可
+</span><span class="c1">// logback 配置样例
+</span><span class="c1">// %date{yyyy-MM-dd HH:mm:ss.SSS} %green(%5level) --- [%15.15thread] %cyan(%-40.40logger{39}) : %magenta([%X{traceId}]) %message%n
+</span><span class="c1">// log4j 配置样例
+</span><span class="c1">// %d{yyyy-MM-dd HH:mm:ss.SSS} %t %c [%X{traceId}]  %m  %n
+</span></code></pre></td></tr></table>
+</div>
+</div><p>使用 MDC 和少量的修改下配置文件后, 对打印 traceId 就不需要一行一行的修改</p>
+<p>traceid 工具类样例</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java">
+<span class="kn">import</span> <span class="nn">org.slf4j.MDC</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Objects</span><span class="o">;</span>
+
+<span class="cm">/**
+</span><span class="cm"> * @author ssf on 2020-06-04
+</span><span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="nc">TraceUtil</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nf">TraceUtil</span><span class="o">()</span> <span class="o">{</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">TRACE_ID</span> <span class="o">=</span> <span class="s">&#34;traceId&#34;</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">TRACE_FLAG_REQUEST</span> <span class="o">=</span> <span class="s">&#34;REQUEST-&#34;</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">TRACE_FLAG_TIMER</span> <span class="o">=</span> <span class="s">&#34;TIMER-&#34;</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">newId</span><span class="o">(</span><span class="n">String</span> <span class="n">flag</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">Objects</span><span class="o">.</span><span class="na">requireNonNull</span><span class="o">(</span><span class="n">flag</span><span class="o">);</span>
+        <span class="n">String</span> <span class="n">id</span> <span class="o">=</span> <span class="n">Ids</span><span class="o">.</span><span class="na">simpleUUID</span><span class="o">();</span>
+        <span class="k">return</span> <span class="n">flag</span><span class="o">.</span><span class="na">trim</span><span class="o">()</span> <span class="o">+</span> <span class="n">id</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">newId</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">newId</span><span class="o">(</span><span class="s">&#34;&#34;</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">newRequestId</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">newId</span><span class="o">(</span><span class="n">TRACE_FLAG_REQUEST</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">setTraceId</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">MDC</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">TRACE_ID</span><span class="o">,</span> <span class="n">newId</span><span class="o">());</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">setTraceId</span><span class="o">(</span><span class="n">String</span> <span class="n">traceId</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">MDC</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">TRACE_ID</span><span class="o">,</span> <span class="n">traceId</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">getTraceId</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">MDC</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">TRACE_ID</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">removeTraceId</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">MDC</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">TRACE_ID</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="controller-新建-traceid">Controller 新建 traceId</h2>
+<p>完成日志打印问题后新问题接踵而至, 在何处将 traceId 放入 MDC 对象中?</p>
+<p>首先我们想到的是就是在每个 Controller 方法头和尾新增 put 和 remove
+方法的调用. 但是还是不符合 <em>低侵入性</em>. 想想其他方式. 都是方法头和尾 -
+before 和 after, 可以使用 <strong>AOP</strong> 面向切面的编程.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="cm">/**
+</span><span class="cm"> * aop 切面, Controller
+</span><span class="cm"> * @author ssf on 2020-06-15
+</span><span class="cm"> */</span>
+<span class="nd">@Aspect</span>
+<span class="nd">@Component</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">RequestAndResponseDumper</span> <span class="o">{</span> <span class="c1">//implements HandlerInterceptor {
+</span><span class="c1"></span>
+    <span class="nd">@Pointcut</span><span class="o">(</span><span class="s">&#34;execution(* a.b.c.*.controller.*Controller*.*(..))&#34;</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">dump</span><span class="o">()</span> <span class="o">{</span>
+
+    <span class="o">}</span>
+
+
+    <span class="nd">@Before</span><span class="o">(</span><span class="s">&#34;dump()&#34;</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">trace</span><span class="o">(</span><span class="n">JoinPoint</span> <span class="n">joinPoint</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">TraceUtil</span><span class="o">.</span><span class="na">setTraceId</span><span class="o">(</span><span class="n">TraceUtil</span><span class="o">.</span><span class="na">newRequestId</span><span class="o">());</span>
+    <span class="o">}</span>
+
+    <span class="nd">@AfterReturning</span><span class="o">(</span><span class="n">pointcut</span> <span class="o">=</span> <span class="s">&#34;dump()&#34;</span><span class="o">,</span> <span class="n">returning</span> <span class="o">=</span> <span class="s">&#34;result&#34;</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">log</span><span class="o">(</span><span class="n">JoinPoint</span> <span class="n">joinPoint</span><span class="o">,</span> <span class="n">Object</span> <span class="n">result</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">TraceUtil</span><span class="o">.</span><span class="na">removeTraceId</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>还有方式: 因为是 Controller 即接口端, 也可使用 Web 容器的拦截器实现
+<code>org.springframework.web.servlet.HandlerInterceptor</code>, preHandle 调用 put
+方法, afterCompletion ( postHandle 也可, afterCompletion 更佳) 调用
+remove 方法</p>
+<h1 id="异步--线程">异步 &amp; 线程</h1>
+<p>解决了单线程业务, 需要面对多线程, 而多线程问题比较麻烦, 要想低侵入性,
+那么只有几点建议</p>
+<h2 id="公共线程池管理">公共线程池管理</h2>
+<p>如果项目有公共的线程池管理线程, 则可以参考以下代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="cm">/**
+</span><span class="cm"> * 线程池工具
+</span><span class="cm"> * @author ssf on 2020-06-15
+</span><span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="nc">ExecutorUtil</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nf">ExecutorUtil</span><span class="o">()</span> <span class="o">{</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kd">static</span> <span class="n">ExecutorService</span> <span class="n">executor</span> <span class="o">=</span> <span class="n">Executors</span><span class="o">.</span><span class="na">newCachedThreadPool</span><span class="o">(</span><span class="k">new</span> <span class="n">ThreadFactory</span><span class="o">()</span> <span class="o">{</span>
+
+        <span class="kd">private</span> <span class="kd">final</span> <span class="n">ThreadGroup</span> <span class="n">group</span><span class="o">;</span>
+        <span class="kd">private</span> <span class="kd">final</span> <span class="n">AtomicInteger</span> <span class="n">threadNumber</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AtomicInteger</span><span class="o">(</span><span class="n">1</span><span class="o">);</span>
+        <span class="kd">private</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">namePrefix</span><span class="o">;</span>
+
+        <span class="o">{</span>
+            <span class="n">SecurityManager</span> <span class="n">s</span> <span class="o">=</span> <span class="n">System</span><span class="o">.</span><span class="na">getSecurityManager</span><span class="o">();</span>
+            <span class="n">group</span> <span class="o">=</span> <span class="o">(</span><span class="n">s</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">?</span> <span class="n">s</span><span class="o">.</span><span class="na">getThreadGroup</span><span class="o">()</span> <span class="o">:</span>
+                    <span class="n">Thread</span><span class="o">.</span><span class="na">currentThread</span><span class="o">().</span><span class="na">getThreadGroup</span><span class="o">();</span>
+            <span class="n">namePrefix</span> <span class="o">=</span> <span class="s">&#34;async-thread-&#34;</span><span class="o">;</span>
+        <span class="o">}</span>
+
+        <span class="kd">public</span> <span class="n">Thread</span> <span class="nf">newThread</span><span class="o">(</span><span class="n">Runnable</span> <span class="n">r</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">Thread</span> <span class="n">t</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Thread</span><span class="o">(</span><span class="n">group</span><span class="o">,</span> <span class="n">r</span><span class="o">,</span>
+                    <span class="n">namePrefix</span> <span class="o">+</span> <span class="n">threadNumber</span><span class="o">.</span><span class="na">getAndIncrement</span><span class="o">(),</span>
+                    <span class="n">0</span><span class="o">);</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">t</span><span class="o">.</span><span class="na">isDaemon</span><span class="o">())</span>
+                <span class="n">t</span><span class="o">.</span><span class="na">setDaemon</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">t</span><span class="o">.</span><span class="na">getPriority</span><span class="o">()</span> <span class="o">!=</span> <span class="n">Thread</span><span class="o">.</span><span class="na">NORM_PRIORITY</span><span class="o">)</span>
+                <span class="n">t</span><span class="o">.</span><span class="na">setPriority</span><span class="o">(</span><span class="n">Thread</span><span class="o">.</span><span class="na">NORM_PRIORITY</span><span class="o">);</span>
+            <span class="k">return</span> <span class="n">t</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">});</span>
+
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">execute</span><span class="o">(</span><span class="kd">final</span> <span class="n">Runnable</span> <span class="n">command</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">final</span> <span class="n">String</span> <span class="n">traceId</span> <span class="o">=</span> <span class="n">TraceIdUtils</span><span class="o">.</span><span class="na">getTraceId</span><span class="o">();</span>
+        <span class="n">executor</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="k">new</span> <span class="n">Runnable</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+                <span class="n">TraceIdUtils</span><span class="o">.</span><span class="na">newTraceId</span><span class="o">(</span><span class="n">traceId</span><span class="o">);</span>
+                <span class="n">command</span><span class="o">.</span><span class="na">run</span><span class="o">();</span>
+                <span class="n">TraceIdUtils</span><span class="o">.</span><span class="na">removeTraceId</span><span class="o">();</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">Future</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="nf">submit</span><span class="o">(</span><span class="kd">final</span> <span class="n">Callable</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">task</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">final</span> <span class="n">String</span> <span class="n">traceId</span> <span class="o">=</span> <span class="n">TraceIdUtils</span><span class="o">.</span><span class="na">getTraceId</span><span class="o">();</span>
+        <span class="k">return</span> <span class="n">executor</span><span class="o">.</span><span class="na">submit</span><span class="o">(</span><span class="k">new</span> <span class="n">Callable</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="n">T</span> <span class="nf">call</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+                <span class="n">TraceIdUtils</span><span class="o">.</span><span class="na">newTraceId</span><span class="o">(</span><span class="n">traceId</span><span class="o">);</span>
+                <span class="n">T</span> <span class="n">res</span> <span class="o">=</span> <span class="n">task</span><span class="o">.</span><span class="na">call</span><span class="o">();</span>
+                <span class="n">TraceIdUtils</span><span class="o">.</span><span class="na">removeTraceId</span><span class="o">();</span>
+                <span class="k">return</span> <span class="n">res</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="springboot-注解-async">SpringBoot 注解 @Async</h2>
+<h3 id="aop--约定">AOP &amp; 约定</h3>
+<p>使用 AOP 以及约定相同前缀的函数名如: async&hellip;&hellip;</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="cm">/**
+</span><span class="cm">* 实现异步服务的链路跟踪, traceId 的设置
+</span><span class="cm">*
+</span><span class="cm">* @author ssf on 2020-06-11
+</span><span class="cm">*/</span>
+<span class="nd">@Aspect</span>
+<span class="nd">@Component</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">AsyncServiceTracer</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="kd">static</span> <span class="n">Logger</span> <span class="n">logger</span> <span class="o">=</span> <span class="n">LoggerFactory</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="n">AsyncServiceTracer</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+
+    <span class="nd">@Pointcut</span><span class="o">(</span><span class="s">&#34;execution(* a.b.c.*.manager.impl.*ManagerImpl.async*(..))&#34;</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">trace</span><span class="o">()</span> <span class="o">{</span>
+
+    <span class="o">}</span>
+
+
+    <span class="nd">@Before</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">&#34;trace()&#34;</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">before</span><span class="o">(</span><span class="n">JoinPoint</span> <span class="n">joinPoint</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">Object</span><span class="o">[]</span> <span class="n">args</span> <span class="o">=</span> <span class="n">joinPoint</span><span class="o">.</span><span class="na">getArgs</span><span class="o">();</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">args</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">args</span><span class="o">.</span><span class="na">length</span> <span class="o">&gt;</span> <span class="n">0</span> <span class="o">&amp;&amp;</span> <span class="n">args</span><span class="o">[</span><span class="n">0</span><span class="o">]</span> <span class="k">instanceof</span> <span class="n">DelegateTaskDTO</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">DelegateTaskDTO</span><span class="o">&lt;?&gt;</span> <span class="n">delegateTask</span> <span class="o">=</span> <span class="o">(</span><span class="n">DelegateTaskDTO</span><span class="o">&lt;?&gt;)</span> <span class="n">args</span><span class="o">[</span><span class="n">0</span><span class="o">];</span>
+            <span class="n">TraceUtil</span><span class="o">.</span><span class="na">setTraceId</span><span class="o">(</span><span class="n">delegateTask</span><span class="o">.</span><span class="na">getDelegateId</span><span class="o">());</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+            <span class="n">logger</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">&#34;async delegate task no delegateId&#34;</span><span class="o">);</span>
+            <span class="n">TraceUtil</span><span class="o">.</span><span class="na">setTraceId</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="nd">@AfterReturning</span><span class="o">(</span><span class="n">pointcut</span> <span class="o">=</span> <span class="s">&#34;trace()&#34;</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">after</span><span class="o">(</span><span class="n">JoinPoint</span> <span class="n">joinPoint</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">TraceUtil</span><span class="o">.</span><span class="na">removeTraceId</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="修改-springboot-async-注解配置的线程池">修改 SpringBoot @Async 注解配置的线程池?</h3>
+<p>未尝试, 有兴趣的可以尝试下.</p>
+<h3 id="new-thread">new Thread</h3>
+<p>那就只能侵入代码, 修改原有代码, 或者将 new Thread()
+修改为使用公共线程池.</p>
+<h1 id="分布式--rpc">分布式 &amp; RPC</h1>
+<p>实现单点应用, 可以大踏步就进入分布式应用.</p>
+<p><strong>如何将 traceId 从 应用 A 传至应用 B 实现跨应用?</strong></p>
+<p>主要以 RPC 框架 Dubbo 进行说明. 主要思想就是使用其 <strong>上下文对象</strong> 存放
+traceId, 将 traceId 从应用 A 传至应用 B.</p>
+<h2 id="dubbo">Dubbo</h2>
+<p>Dubbo 使用过滤器功能对 Dubbo 上下文对象 RpcContext 进行操作</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java">
+<span class="kn">import</span> <span class="nn">org.apache.dubbo.rpc.*</span><span class="o">;</span>
+
+<span class="cm">/**
+</span><span class="cm"> * @author ssf on 2020-06-09
+</span><span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TraceIdFilter</span> <span class="kd">implements</span> <span class="n">Filter</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">Result</span> <span class="nf">invoke</span><span class="o">(</span><span class="n">Invoker</span><span class="o">&lt;?&gt;</span> <span class="n">invoker</span><span class="o">,</span> <span class="n">Invocation</span> <span class="n">invocation</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">RpcException</span> <span class="o">{</span>
+        <span class="n">RpcContext</span> <span class="n">rpcContext</span> <span class="o">=</span> <span class="n">RpcContext</span><span class="o">.</span><span class="na">getContext</span><span class="o">();</span>
+        <span class="c1">// provider
+</span><span class="c1"></span>        <span class="k">if</span> <span class="o">(</span><span class="n">rpcContext</span><span class="o">.</span><span class="na">isProviderSide</span><span class="o">())</span> <span class="o">{</span>
+            <span class="n">String</span> <span class="n">traceId</span> <span class="o">=</span> <span class="n">rpcContext</span><span class="o">.</span><span class="na">getAttachment</span><span class="o">(</span><span class="s">&#34;traceId&#34;</span><span class="o">);</span>
+            <span class="n">MDC</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;traceId&#34;</span><span class="o">,</span> <span class="n">traceId</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">rpcContext</span><span class="o">.</span><span class="na">isConsumerSide</span><span class="o">())</span> <span class="o">{</span>
+            <span class="n">rpcContext</span><span class="o">.</span><span class="na">setAttachment</span><span class="o">(</span><span class="s">&#34;traceId&#34;</span><span class="o">,</span> <span class="n">MDC</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&#34;traceId&#34;</span><span class="o">));</span>
+        <span class="o">}</span>
+
+        <span class="n">Result</span> <span class="n">result</span> <span class="o">=</span> <span class="n">invoker</span><span class="o">.</span><span class="na">invoke</span><span class="o">(</span><span class="n">invocation</span><span class="o">);</span>
+
+        <span class="k">if</span> <span class="o">(</span><span class="n">rpcContext</span><span class="o">.</span><span class="na">isProviderSide</span><span class="o">())</span> <span class="o">{</span>
+            <span class="n">TraceUtil</span><span class="o">.</span><span class="na">removeTraceId</span><span class="o">();</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">result</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+<span class="c1">/// 新增文件 META-INF/dubbo/com.alibaba.dubbo.rpc.Filter
+</span><span class="c1">/// 内容:
+</span><span class="c1">/// traceIdFilter=a.b.c.dubbo.filter.TraceIdFilter
+</span></code></pre></td></tr></table>
+</div>
+</div><h2 id="springcloud">SpringCloud</h2>
+<p>SpringCloud 没进行实操, 其解决思路大致为: 因为 SpringCloud 的 RPC
+交互协议为 HTTP 协议, 可以将 traceId 放入 Headers 中传送至下一个应用服务
+B, 应用 B 在接受到请求将 Headers 中的 traceId 取出放至 MDC</p>
+<h1 id="其他组件">[TODO]{.todo .TODO} 其他组件</h1>
+<p>将 TraceID 带入 MessageQueue 的上下文信息中, 实现 biz chain
+业务链路的一体化</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2021-09-07</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/traceid/index.md" target="_blank">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://ssfzxc.github.io/traceid/" data-title="TraceID" data-hashtags="java"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://ssfzxc.github.io/traceid/" data-hashtag="java"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Hacker News" data-sharer="hackernews" data-url="https://ssfzxc.github.io/traceid/" data-title="TraceID"><i class="fab fa-hacker-news fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://ssfzxc.github.io/traceid/" data-title="TraceID"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://ssfzxc.github.io/traceid/" data-title="TraceID"><i class="fab fa-weibo fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/arch/" class="prev" rel="prev" title="Hello ArchLinux"><i class="fas fa-angle-left fa-fw"></i>Hello ArchLinux</a>
+            <a href="/crosscompile/" class="next" rel="next" title="Cross Compile">Cross Compile<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.87.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">xxxx</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/css/lightgallery.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.2.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"serverURLs":"https://leancloud.hugoloveit.com","visitor":true}},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.zh-cn","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

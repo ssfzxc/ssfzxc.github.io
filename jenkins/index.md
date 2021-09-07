@@ -35,9 +35,9 @@
 
   - FreeStyle: 脚本最前面新增 BUILD_ID
 
-  ```sh
-  BUILD_ID=donotKillMe
-  echo 'hello'
-  ```
+    ```sh
+    BUILD_ID=donotKillMe
+    echo 'hello'
+    ```
 
 
